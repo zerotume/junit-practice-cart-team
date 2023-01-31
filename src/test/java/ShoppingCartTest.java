@@ -11,10 +11,14 @@ public class ShoppingCartTest {
 
 
     ShoppingCart test_cart;
+    Product apple;
+    Product banana;
 
     @Before
     public void createObject() {
         test_cart = new ShoppingCart(); //shopping cart with one object
+        apple = new Product("Apple", 2.99);
+        banana = new Product("Banana", 0.69);
     }
     @Test
     public void defaultItems() {
@@ -24,9 +28,9 @@ public class ShoppingCartTest {
     @Test
     public void addItem() {
         //tests if item incrementation works
-        test_cart.addItem(new Product("Apple", 2.99));
+        test_cart.addItem(apple);
         assertEquals(1,test_cart.getItemCount());
-        test_cart.addItem(new Product("Banana", 0.69));
+        test_cart.addItem(banana);
         assertEquals(2,test_cart.getItemCount());
 
     }
