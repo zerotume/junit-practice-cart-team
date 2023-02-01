@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ShoppingCartTest {
 
-
+//
     ShoppingCart test_cart;
     Product apple;
     Product banana;
@@ -20,11 +20,13 @@ public class ShoppingCartTest {
         apple = new Product("Apple", 2.99);
         banana = new Product("Banana", 0.69);
     }
+    // When created, the cart has 0 items
     @Test
     public void defaultItems() {
         assertEquals(0, test_cart.getItemCount());
     }
 
+    // When a new product is added, the number of items must be incremented
     @Test
     public void addItem() {
         //tests if item incrementation works
@@ -34,7 +36,7 @@ public class ShoppingCartTest {
         assertEquals(2,test_cart.getItemCount());
 
     }
-
+// When a new product is added, the new balance must be the sum of the previous balance plus the cost of the new product
     @Test
     public void addItemPrice() {
         //tests if item price summation works
@@ -43,7 +45,7 @@ public class ShoppingCartTest {
         test_cart.addItem(new Product("Banana", 0.69));
         assertEquals(3.68,test_cart.getBalance());
     }
-
+    // When empty, the cart has 0 items
     @Test
     public void emptyCart() {
         //add 2 items and then remove them all with empty() method.
@@ -53,7 +55,7 @@ public class ShoppingCartTest {
         test_cart.empty();
         assertEquals(0, test_cart.getItemCount());
     }
-
+// When an item is removed, the number of items must be decreased
     @Test
     public void removeItem() throws ProductNotFoundException {
         //add 1 item, remove it, the item count should be 0.
@@ -61,9 +63,10 @@ public class ShoppingCartTest {
         test_cart.addItem(product);
         assertEquals(1,test_cart.getItemCount());
         test_cart.removeItem(product);
-        assertEquals(0, test_cart.getItemCount());
+        assertEquals(0, test_cart.getItemCount()); //assert equal passed two parameters, the expected outcome and the outcome we are currently testing
     }
 
+    // When a product not in the cart is removed, a ProductNotFoundException must be thrown
     @Test
     public void removeItemNotFound() {
         Product product = new Product("Apple", 2.99);
